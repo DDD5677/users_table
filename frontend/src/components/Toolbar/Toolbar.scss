@@ -1,0 +1,10 @@
+.toolbar {
+   padding: 20px;
+}
+
+.toolbar,
+.btns {
+   display: flex;
+   justify-content: flex-end;
+   gap: 20px;
+}
