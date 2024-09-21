@@ -14,7 +14,6 @@ function Register() {
    const navigate = useNavigate();
    const registerSubmit = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log("register");
       try {
          const response = await UserService.register({ email, password, name });
          const data = response.data;
@@ -23,10 +22,9 @@ function Register() {
          navigate("/");
       } catch (error) {
          if (axios.isAxiosError(error)) {
-            console.log(error);
             setError(error.response?.data.message);
          } else {
-            console.log("error");
+            console.log(error);
          }
       }
    };

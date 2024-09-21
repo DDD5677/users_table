@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import LockIcon from "@mui/icons-material/Lock";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 import "./Toolbar.scss";
 import { removeItem } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
@@ -23,21 +23,22 @@ function Toolbar({
          <div className="btns">
             <Button
                disabled={disabled}
-               color="success"
+               color="error"
                variant="contained"
-               onClick={() => updateUser("active")}
+               onClick={() => updateUser("blocked")}
             >
-               Unblock
+               Block
             </Button>
             <Button
                sx={{ padding: "10px", minWidth: "0px" }}
                disabled={disabled}
-               color="info"
+               color="success"
                variant="contained"
-               onClick={() => updateUser("blocked")}
+               onClick={() => updateUser("active")}
             >
-               <LockIcon />
+               <LockOpenIcon />
             </Button>
+
             <Button
                sx={{ padding: "10px", minWidth: "0px" }}
                disabled={disabled}
@@ -45,7 +46,7 @@ function Toolbar({
                variant="contained"
                onClick={() => deleteUser()}
             >
-               <DeleteIcon />
+               <DeleteOutlineIcon />
             </Button>
          </div>
          <Button

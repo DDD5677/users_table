@@ -22,10 +22,9 @@ function SignIn() {
          navigate("/");
       } catch (error) {
          if (axios.isAxiosError(error)) {
-            console.log(error);
             setError(error.response?.data.message);
          } else {
-            console.log("error");
+            console.log(error);
          }
       } finally {
          setLoading(false);
