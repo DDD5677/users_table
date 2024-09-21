@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(
    cors({
-      origin: "*",
+      origin: "https://users-table-c5ie.onrender.com",
    })
 );
 app.options("*", cors());
