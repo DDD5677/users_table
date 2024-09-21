@@ -10,7 +10,7 @@ class UserController {
          const salt = bcrypt.genSaltSync(10);
          const hashPassword = bcrypt.hashSync(password, salt);
          const user = await db.query(
-            `INSERT INTO "user" (name, email, password) values ($1, $2, $3) RETURNING *`,
+            `INSERT INTO "user" (name, email, password) values ($1, $2, $3) RETURNING id, name, email,status, created_at, last_login`,
             [name, email, hashPassword]
          );
          const token = jwt.sign(
@@ -49,7 +49,7 @@ class UserController {
             }
          );
          const updatedUser = await db.query(
-            `UPDATE "user" SET last_login = NOW() WHERE id = $1 RETURNING *`,
+            `UPDATE "user" SET last_login = NOW() WHERE id = $1 RETURNING id, name, email,status, created_at, last_login`,
             [user.id]
          );
          res.status(200).json({ token, user: updatedUser.rows[0] });
